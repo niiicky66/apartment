@@ -1,0 +1,415 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Listing 鈥?Golden Time</title>
+    <style id="theme-vars">
+:root {
+  /* ===== Brand Primary 鈥?Golden Time ===== */
+  --color-primary: #D4A853;
+  --color-primary-light: #E8C97A;
+  --color-primary-dark: #B8923E;
+
+  /* ===== Semantic State Colors ===== */
+  --state-success: #22C55E;
+  --state-warning: #F59E0B;
+  --state-error: #EF4444;
+  --state-info: #3B82F6;
+
+  /* ===== Neutral Palette ===== */
+  --color-bg: #FAF8F5;
+  --color-bg-white: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-muted: #F3EFE8;
+  --color-bg-input: #F5F1EB;
+
+  /* ===== Text Colors ===== */
+  --color-text-primary: #2C2417;
+  --color-text-secondary: #6B5D4F;
+  --color-text-tertiary: #A89882;
+  --color-text-inverse: #FFFFFF;
+
+  /* ===== Border Colors ===== */
+  --color-border: #E8E0D4;
+  --color-border-light: #F0EBE3;
+
+  /* ===== Typography ===== */
+  --font-family: "Georgia", "Noto Serif SC", "PingFang SC", "Microsoft YaHei", serif;
+  --font-family-title: "Georgia", "Noto Serif SC", "PingFang SC", "Microsoft YaHei", serif;
+  --font-family-body: "Inter", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+
+  --font-size-hero: 32px;
+  --font-size-h1: 26px;
+  --font-size-h2: 20px;
+  --font-size-h3: 17px;
+  --font-size-body: 15px;
+  --font-size-small: 13px;
+  --font-size-mini: 11px;
+
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+
+  --line-height-tight: 1.3;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.7;
+
+  /* ===== Spacing ===== */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 28px;
+  --spacing-2xl: 40px;
+  --spacing-3xl: 56px;
+
+  /* ===== Border Radius ===== */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ===== Shadow ===== */
+  --shadow-card: 0 1px 4px rgba(44, 36, 23, 0.04);
+  --shadow-elevated: 0 6px 20px rgba(44, 36, 23, 0.08);
+  --shadow-float: 0 12px 32px rgba(44, 36, 23, 0.12);
+}
+
+/* ===== Typography Classes ===== */
+.text-hero { font-size: var(--font-size-hero); font-weight: var(--font-weight-bold); line-height: var(--line-height-tight); font-family: var(--font-family-title); }
+.text-h1 { font-size: var(--font-size-h1); font-weight: var(--font-weight-bold); line-height: var(--line-height-tight); font-family: var(--font-family-title); }
+.text-h2 { font-size: var(--font-size-h2); font-weight: var(--font-weight-semibold); line-height: var(--line-height-tight); font-family: var(--font-family-title); }
+.text-h3 { font-size: var(--font-size-h3); font-weight: var(--font-weight-semibold); line-height: var(--line-height-normal); font-family: var(--font-family-title); }
+.text-body { font-size: var(--font-size-body); font-weight: var(--font-weight-regular); line-height: var(--line-height-normal); font-family: var(--font-family-body); }
+.text-small { font-size: var(--font-size-small); font-weight: var(--font-weight-regular); line-height: var(--line-height-normal); font-family: var(--font-family-body); }
+.text-mini { font-size: var(--font-size-mini); font-weight: var(--font-weight-regular); line-height: var(--line-height-normal); font-family: var(--font-family-body); }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--color-primary);
+    --color-border: var(--color-border);
+  }
+  @layer base {
+    body { background: var(--color-background); color: var(--color-text-primary); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main style="background: var(--color-bg); padding-top: 40px; padding-bottom: 0;">
+      <div style="max-width: 1100px; margin: 0 auto; padding: 0 24px;">
+
+        <!-- Photo Carousel Hero -->
+        <section style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg-muted); margin-bottom: 12px;">
+          <!-- Images stacked, crossfade -->
+          <img id="carousel-img-1" src="assets/room-photo-1.jpg" alt="Apartment photo 1" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 300ms ease;">
+          <img id="carousel-img-2" src="assets/room-photo-2.jpg" alt="Apartment photo 2" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 300ms ease;">
+          <img id="carousel-img-3" src="assets/room-photo-3.jpg" alt="Apartment photo 3" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 300ms ease;">
+          <img id="carousel-img-4" src="assets/room-photo-4.jpg" alt="Apartment photo 4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 300ms ease;">
+          <img id="carousel-img-5" src="assets/room-photo-5.jpg" alt="Apartment photo 5" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 300ms ease;">
+          <img id="carousel-img-6" src="assets/room-photo-6.jpg" alt="Apartment photo 6" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 300ms ease;">
+          <img id="carousel-img-7" src="assets/room-photo-7.jpg" alt="Apartment photo 7" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 300ms ease;">
+          <img id="carousel-img-8" src="assets/room-photo-8.jpg" alt="Apartment photo 8" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 300ms ease;">
+          <img id="carousel-img-9" src="assets/room-photo-9.jpg" alt="Apartment photo 9" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 300ms ease;">
+          <!-- Left Arrow -->
+          <button id="carousel-prev" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.75); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: background 160ms cubic-bezier(.2,.8,.2,1);" onmouseover="this.style.background='rgba(255,255,255,0.95)'" onmouseout="this.style.background='rgba(255,255,255,0.75)'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <!-- Right Arrow -->
+          <button id="carousel-next" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.75); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: background 160ms cubic-bezier(.2,.8,.2,1);" onmouseover="this.style.background='rgba(255,255,255,0.95)'" onmouseout="this.style.background='rgba(255,255,255,0.75)'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </section>
+        <!-- Dot indicators -->
+        <div id="carousel-dots" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 40px;">
+          <span class="carousel-dot" data-index="0" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary); cursor: pointer; transition: background 160ms ease;"></span>
+          <span class="carousel-dot" data-index="1" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); cursor: pointer; transition: background 160ms ease;"></span>
+          <span class="carousel-dot" data-index="2" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); cursor: pointer; transition: background 160ms ease;"></span>
+          <span class="carousel-dot" data-index="3" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); cursor: pointer; transition: background 160ms ease;"></span>
+          <span class="carousel-dot" data-index="4" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); cursor: pointer; transition: background 160ms ease;"></span>
+          <span class="carousel-dot" data-index="5" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); cursor: pointer; transition: background 160ms ease;"></span>
+          <span class="carousel-dot" data-index="6" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); cursor: pointer; transition: background 160ms ease;"></span>
+          <span class="carousel-dot" data-index="7" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); cursor: pointer; transition: background 160ms ease;"></span>
+          <span class="carousel-dot" data-index="8" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); cursor: pointer; transition: background 160ms ease;"></span>
+        </div>
+
+        <!-- Two-column Layout -->
+        <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+
+          <!-- LEFT COLUMN (~62%) -->
+          <div style="flex: 1 1 62%; min-width: 0;">
+
+            <!-- Description Card -->
+            <section style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 40px;">
+              <h2 class="text-h2" style="color: var(--color-text-primary); margin-bottom: 20px; font-family: var(--font-family-title); text-wrap: balance;">Description</h2>
+              <div class="text-body" style="color: var(--color-text-secondary); line-height: 1.7;">
+                <p style="margin-bottom: 16px;">Located at Tianjin World Financial Center 鈥?Jinta Apartments, in the Heping District along the picturesque Hai River, adjacent to Tianjin Railway Station and the Italian Style District. This south-facing apartment spans approximately 60 sqm with abundant natural light and panoramic views of the Hai River skyline.</p>
+                <p style="margin-bottom: 16px;">The apartment is beautifully renovated and fully furnished, featuring air conditioning, washing machine, refrigerator, water heater, and television 鈥?ready for immediate move-in. Independent bathroom with wet/dry separation. Kitchen equipped with basic cookware for daily cooking.</p>
+                <p style="margin-bottom: 16px;">The community offers a quiet, safe environment with 24-hour security and elevator access. Outstanding surrounding amenities: walking distance to Metro Lines 2, 3, and 4. Convenience stores, supermarkets, restaurants, and cafes are all within steps. Free WiFi included.</p>
+                <p>Ideal for singles or couples. No gender restrictions. Long-term renewal available.</p>
+              </div>
+            </section>
+
+            <!-- Amenities Card -->
+            <section style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 40px;">
+              <h2 class="text-h2" style="color: var(--color-text-primary); margin-bottom: 20px; font-family: var(--font-family-title); text-wrap: balance;">Amenities</h2>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                <!-- Washer -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><rect x="5" y="6" width="14" height="15" rx="2"/><circle cx="12" cy="14" r="3"/><line x1="6" y1="3" x2="6" y2="6"/><line x1="10" y1="3" x2="10" y2="6"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Washer</span>
+                </div>
+                <!-- Bathroom -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z"/><path d="M6 12V5a2 2 0 0 1 2-2h3v2.25"/><path d="M4 21h16"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Bathroom</span>
+                </div>
+                <!-- Hot Water -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M15 5H9"/><path d="M15 9H9"/><path d="M12 2c3 3 4 7 4 10a4 4 0 1 1-8 0c0-3 1-7 4-10z"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Hot Water</span>
+                </div>
+                <!-- Living Room -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Living Room</span>
+                </div>
+                <!-- WiFi -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="var(--color-primary)"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">WiFi</span>
+                </div>
+                <!-- Garden -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M12 2a4 4 0 0 0-4 4c0 2 4 4 4 4s4-2 4-4a4 4 0 0 0-4-4z"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Garden</span>
+                </div>
+                <!-- A/C -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h.01"/><path d="M12 12h.01"/><path d="M18 12h.01"/><path d="M6 18h12"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">A/C</span>
+                </div>
+                <!-- Security -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Security</span>
+                </div>
+                <!-- Elevator -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 8v8"/><polyline points="9 11 12 8 15 11"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Elevator</span>
+                </div>
+                <!-- Kitchen -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Kitchen</span>
+                </div>
+                <!-- Parking -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7l4 5-4 5"/><path d="M17 7h-3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Parking</span>
+                </div>
+                <!-- Gym -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M2 12h4l2-2 4 4 2-2 6 6"/><circle cx="17" cy="5" r="2"/><circle cx="7" cy="5" r="2"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Gym</span>
+                </div>
+                <!-- Heating -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-4 4-7 8-7 12a7 7 0 0 0 14 0c0-4-3-8-7-12z"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">Heating</span>
+                </div>
+                <!-- TV -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="7 2 12 7 17 2"/></svg>
+                  <span class="text-small" style="color: var(--color-text-secondary);">TV</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Location Card -->
+            <section style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 40px;">
+              <h2 class="text-h2" style="color: var(--color-text-primary); margin-bottom: 20px; font-family: var(--font-family-title); text-wrap: balance;">Location</h2>
+              <div style="width: 100%; height: 200px; background: var(--color-bg-muted); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; overflow: hidden; position: relative;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <p class="text-body" style="color: var(--color-text-secondary);">Heping District, Tianjin | Tianjin World Financial Center 鈥?Jinta Apartments</p>
+            </section>
+
+          </div>
+
+          <!-- RIGHT COLUMN (~38%) Sidebar -->
+          <div style="flex: 0 0 calc(38% - 32px); min-width: 280px;">
+
+            <!-- Owner Card -->
+            <section style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 32px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+              <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-bg-muted); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <h3 class="text-h3" style="color: var(--color-text-primary); margin-bottom: 4px;">Landlord</h3>
+              <p class="text-small" style="color: var(--color-text-tertiary); margin-bottom: 12px;">Tianjin</p>
+              <span style="display: inline-flex; align-items: center; justify-content: center; padding: 4px 12px; border-radius: var(--radius-full); background: var(--color-bg-muted); font-size: var(--font-size-small); color: var(--color-text-secondary); margin-bottom: 20px; white-space: nowrap;">Tianjin Local</span>
+              <button style="width: 100%; padding: 12px 20px; border-radius: var(--radius-full); background: var(--color-primary); color: var(--color-text-inverse); border: none; cursor: pointer; font-size: var(--font-size-body); font-weight: 600; font-family: var(--font-family-body); display: flex; align-items: center; justify-content: center; white-space: nowrap; transition: background 160ms cubic-bezier(.2,.8,.2,1);" onmouseover="this.style.background='var(--color-primary-dark)'" onmouseout="this.style.background='var(--color-primary)'" data-dom-id="btn-message">Message</button>
+            </section>
+
+            <!-- Price Card -->
+            <section style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 32px; display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <span style="font-size: 32px; font-weight: 700; color: var(--color-primary); font-family: var(--font-family-title); white-space: nowrap;">&#165;3,200</span>
+                <span class="text-body" style="color: var(--color-text-secondary); margin-left: 4px;">/month</span>
+              </div>
+              <button style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--color-border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 160ms ease, color 160ms ease; color: var(--color-text-tertiary);" onmouseover="this.style.borderColor='var(--color-primary)';this.style.color='var(--color-primary)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-text-tertiary)'" data-dom-id="btn-favorite" aria-label="Add to favorites">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </section>
+
+            <!-- Property Details Card -->
+            <section style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 32px;">
+              <h3 class="text-h3" style="color: var(--color-text-primary); margin-bottom: 20px; font-family: var(--font-family-title); text-wrap: balance;">Property Details</h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                  <span class="text-small" style="color: var(--color-text-tertiary); display: block; margin-bottom: 4px;">Deposit</span>
+                  <span class="text-body" style="color: var(--color-text-primary); font-weight: 500;">&#165;3,200</span>
+                </div>
+                <div>
+                  <span class="text-small" style="color: var(--color-text-tertiary); display: block; margin-bottom: 4px;">Type</span>
+                  <span class="text-body" style="color: var(--color-text-primary); font-weight: 500;">Entire Apartment</span>
+                </div>
+                <div>
+                  <span class="text-small" style="color: var(--color-text-tertiary); display: block; margin-bottom: 4px;">Rooms</span>
+                  <span class="text-body" style="color: var(--color-text-primary); font-weight: 500;">1 Bed / 1 Bath</span>
+                </div>
+                <div>
+                  <span class="text-small" style="color: var(--color-text-tertiary); display: block; margin-bottom: 4px;">Floor</span>
+                  <span class="text-body" style="color: var(--color-text-primary); font-weight: 500;">5th Floor</span>
+                </div>
+                <div>
+                  <span class="text-small" style="color: var(--color-text-tertiary); display: block; margin-bottom: 4px;">Size</span>
+                  <span class="text-body" style="color: var(--color-text-primary); font-weight: 500;">58.0 m&sup2;</span>
+                </div>
+                <div>
+                  <span class="text-small" style="color: var(--color-text-tertiary); display: block; margin-bottom: 4px;">Metro</span>
+                  <span class="text-body" style="color: var(--color-text-primary); font-weight: 500;">Lines 2/3/4</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Tags Card -->
+            <section style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 40px;">
+              <h3 class="text-h3" style="color: var(--color-text-primary); margin-bottom: 20px; font-family: var(--font-family-title); text-wrap: balance;">Tags</h3>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; padding: 6px 16px; border-radius: var(--radius-full); background: var(--color-bg-muted); font-size: var(--font-size-small); color: var(--color-text-secondary); white-space: nowrap;">Renewal Available</span>
+                <span style="display: inline-flex; align-items: center; justify-content: center; padding: 6px 16px; border-radius: var(--radius-full); background: var(--color-bg-muted); font-size: var(--font-size-small); color: var(--color-text-secondary); white-space: nowrap;">Clean &amp; Cozy</span>
+                <span style="display: inline-flex; align-items: center; justify-content: center; padding: 6px 16px; border-radius: var(--radius-full); background: var(--color-bg-muted); font-size: var(--font-size-small); color: var(--color-text-secondary); white-space: nowrap;">No Gender Limit</span>
+              </div>
+            </section>
+
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer style="border-top: 1px solid var(--color-border); padding: 28px 0 40px; margin-top: 0;">
+          <p class="text-small" style="color: var(--color-text-tertiary); text-align: center;">&copy; 2026 Golden Time Rentals. All rights reserved.</p>
+        </footer>
+
+      </div>
+    </main>
+
+    <!-- Responsive & Custom Styles -->
+     <style>
+       @media (max-width: 768px) {
+         main > div > div[style*="display: flex"][style*="gap: 32px"] {
+           flex-direction: column;
+         }
+         main > div > div > div[style*="flex: 0 0 calc(38%)"] {
+           flex: 1 1 100% !important;
+           min-width: 0 !important;
+         }
+         main > div > div > div[style*="flex: 1 1 62%"] {
+           flex: 1 1 100% !important;
+         }
+         [style*="grid-template-columns: repeat(4"] {
+           grid-template-columns: repeat(3, 1fr) !important;
+         }
+         [style*="grid-template-columns: 1fr 1fr"] {
+           grid-template-columns: 1fr 1fr !important;
+         }
+         section[style*="aspect-ratio: 16/9"] {
+           aspect-ratio: 4/3 !important;
+           border-radius: 8px !important;
+         }
+       }
+       @media (max-width: 480px) {
+         [style*="grid-template-columns: repeat(3"] {
+           grid-template-columns: repeat(2, 1fr) !important;
+         }
+       }
+       @media (prefers-reduced-motion: reduce) {
+         img[style*="transition: opacity"] {
+           transition-duration: 0.01ms !important;
+         }
+       }
+     </style>
+
+     <!-- Carousel JavaScript -->
+    <script>
+    (function() {
+      var current = 0;
+      var total = 9;
+      var prevBtn = document.getElementById('carousel-prev');
+      var nextBtn = document.getElementById('carousel-next');
+      var dots = document.querySelectorAll('.carousel-dot');
+
+      function goTo(index) {
+        for (var i = 1; i <= total; i++) {
+          var img = document.getElementById('carousel-img-' + i);
+          if (img) img.style.opacity = (i - 1 === index) ? '1' : '0';
+        }
+        for (var j = 0; j < dots.length; j++) {
+          dots[j].style.background = (j === index) ? 'var(--color-primary)' : 'var(--color-border)';
+        }
+        current = index;
+      }
+
+      prevBtn.addEventListener('click', function() {
+        goTo((current - 1 + total) % total);
+      });
+      nextBtn.addEventListener('click', function() {
+        goTo((current + 1) % total);
+      });
+      for (var k = 0; k < dots.length; k++) {
+        dots[k].addEventListener('click', function() {
+          goTo(parseInt(this.getAttribute('data-index')));
+        });
+      }
+    })();
+    </script>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
+
