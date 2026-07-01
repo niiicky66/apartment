@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Explicit invitations for the crawlers you care about
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+Sitemap: https://nicky66.top/sitemap.xml
