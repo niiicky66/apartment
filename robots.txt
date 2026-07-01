@@ -11,4 +11,4 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-Sitemap: https://nicky66.top/sitemap.xml
+Sitemap: https://apartment.nicky66.top/sitemap.xml
